@@ -91,9 +91,21 @@ class HashMap {
       }
     }
   }
+  remove(key) {
+    this.hash(key);
+    let fittingArray = this.array[this.hashCode];
+    if (fittingArray.length === 0) {
+      console.log("Key wasn't found!");
+      return false;
+    } else {
+      let arrFound = fittingArray[0].find(key);
+      fittingArray[0].removeAt(arrFound);
+      return true;
+    }
+  }
 }
 
-const testDing = new HashMap(0.8, 16);
+const testDing = new HashMap(0.75, 16);
 testDing.set("apple", "red");
 testDing.set("banana", "yellow");
 testDing.set("carrot", "orange");
@@ -110,3 +122,6 @@ testDing.set("lion", "blue");
 
 console.log(testDing.get("pupi"));
 console.log(testDing.has("grape"));
+console.log(testDing);
+console.log(testDing.remove("lion"));
+console.log(testDing);
