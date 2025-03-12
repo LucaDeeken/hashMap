@@ -121,20 +121,14 @@ export class LinkedList {
 
   findKey(key) {
     let current = this.head;
-    console.log(current);
-    let counter = 0;
-    while (current.key !== key) {
-      console.log(key);
-      console.log(current.key)
-      console.log(current.next);
-      console.log(this.size);
-      current = current.next;
-      counter = counter + 1;
-      if (counter === this.size) {
-        break;
+    // Durchlaufe die Liste, bis das Ende erreicht ist oder der Schlüssel gefunden wurde
+    while (current !== null) {
+      if (current.key === key) {
+        return "true"; // Schlüssel gefunden
       }
+      current = current.next; // Gehe zum nächsten Knoten
     }
-    return current != null ? "true" : "false";
+    return "false"; // Schlüssel nicht gefunden
   }
 
   toString() {
@@ -177,7 +171,6 @@ export class LinkedList {
         let node = this.getIndex(index);
         node.value = value;
         node.key = key;
-        console.log("YOOOO");
       }
     }
   }

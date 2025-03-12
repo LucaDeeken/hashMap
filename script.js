@@ -103,6 +103,32 @@ class HashMap {
       return true;
     }
   }
+  length() {
+    let incrementSize = 0;
+    for (let bucket of this.array) {
+      if (bucket.length === 0) {
+        continue;
+      } else {
+        incrementSize = incrementSize + bucket[0].getSize();
+      }
+    }
+    return incrementSize;
+  }
+
+  clear() {
+    for (let bucket of this.array) {
+      if (bucket.length === 0) {
+        continue;
+      } else {
+        let bucketLength = bucket[0].size;
+        bucketLength = bucketLength-1;
+        while(bucketLength>-1) {
+          bucket[0].removeAt(bucketLength);
+          bucketLength =  bucketLength-1;
+        }
+      } 
+    }
+  }
 }
 
 const testDing = new HashMap(0.75, 16);
@@ -125,3 +151,20 @@ console.log(testDing.has("grape"));
 console.log(testDing);
 console.log(testDing.remove("lion"));
 console.log(testDing);
+console.log(testDing.length());
+console.log(testDing.clear());
+console.log(testDing);
+
+testDing.set("apple", "red");
+testDing.set("banana", "yellow");
+testDing.set("carrot", "orange");
+testDing.set("dog", "brown");
+testDing.set("elephant", "gray");
+testDing.set("frog", "green");
+testDing.set("grape", "purple");
+testDing.set("hat", "black");
+testDing.set("ice cream", "white");
+testDing.set("jacket", "blue");
+testDing.set("kite", "pink");
+testDing.set("lion", "golden");
+testDing.set("lion", "blue");
