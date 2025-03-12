@@ -45,7 +45,19 @@ class HashMap {
         fittingArray[0].append(newKey.key, newKey.value);
       }
     }
+    let hashMapSize = this.length();
+    console.log(hashMapSize);
+    if(hashMapSize>(this.capacity*this.loadFactor)) {
+      this.capacity = this.capacity*2;
+      let newArrays = this.capacity/2;
+      for (let i = 0; i < newArrays; i++) {
+        let newArray = [];
+        this.array.push(newArray);
+      }
+    }
+  
   }
+
 
   get(key) {
     this.hash(key);
@@ -121,13 +133,65 @@ class HashMap {
         continue;
       } else {
         let bucketLength = bucket[0].size;
-        bucketLength = bucketLength-1;
-        while(bucketLength>-1) {
+        bucketLength = bucketLength - 1;
+        while (bucketLength > -1) {
           bucket[0].removeAt(bucketLength);
-          bucketLength =  bucketLength-1;
+          bucketLength = bucketLength - 1;
         }
-      } 
+      }
     }
+  }
+  keys() {
+    let outputArray = [];
+    for (let bucket of this.array) {
+      if (bucket.length === 0) {
+        continue;
+      } else {
+        let bucketLength = bucket[0].size;
+        bucketLength = bucketLength - 1;
+        let firstElement = bucket[0].head;
+        while (bucketLength > -1) {
+          outputArray.push(firstElement.key);
+          firstElement = firstElement.next;
+          bucketLength = bucketLength - 1;
+        }
+      }
+    }
+    return outputArray;
+  }
+  values() {
+    let outputArray = [];
+    for (let bucket of this.array) {
+      if (bucket.length === 0) {
+        continue;
+      } else {
+        let bucketLength = bucket[0].size;
+        bucketLength = bucketLength - 1;
+        let firstElement = bucket[0].head;
+        while (bucketLength > -1) {
+          outputArray.push(firstElement.value);
+          firstElement = firstElement.next;
+          bucketLength = bucketLength - 1;
+        }
+      }
+    }
+    return outputArray;
+  }
+  entries() {
+    let keyArray = this.keys();
+    let valueArray = this.values();
+    let entriesArray = [];
+
+    const iterations = keyArray.length;
+    for(let i=0; i<iterations; i++) {
+      let temporaryArray = [];
+      let keyElement = keyArray.pop();
+      let valueElement = valueArray.pop();
+      temporaryArray.push(keyElement);
+      temporaryArray.push(valueElement);
+      entriesArray.push(temporaryArray);
+    }
+    console.log(entriesArray);
   }
 }
 
@@ -168,3 +232,10 @@ testDing.set("jacket", "blue");
 testDing.set("kite", "pink");
 testDing.set("lion", "golden");
 testDing.set("lion", "blue");
+console.log(testDing.keys());
+console.log(testDing.values());
+console.log(testDing.entries());
+testDing.set("hats", "Pupi");
+console.log(testDing);
+
+
