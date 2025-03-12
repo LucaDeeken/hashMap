@@ -73,6 +73,24 @@ class HashMap {
       }
     }
   }
+
+  has(key) {
+    this.hash(key);
+    let fittingArray = this.array[this.hashCode];
+    if (fittingArray.length === 0) {
+      console.log("Key wasn't found!");
+      return false;
+    } else {
+      const isItPresent = fittingArray[0].findKey(key);
+      if (isItPresent === "true") {
+        console.log("key found!");
+        return true;
+      } else {
+        console.log("key wasn't found!");
+        return false;
+      }
+    }
+  }
 }
 
 const testDing = new HashMap(0.8, 16);
@@ -91,3 +109,4 @@ testDing.set("lion", "golden");
 testDing.set("lion", "blue");
 
 console.log(testDing.get("pupi"));
+console.log(testDing.has("grape"));
