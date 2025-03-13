@@ -2,7 +2,7 @@
 
 ## **Project Overview**
 
->This project is a custom implementation of a HashMap in JavaScript as part of The Odin Project curriculum. The implementation includes methods for setting, retrieving, and managing key-value pairs >while handling collisions and dynamically resizing the hashmap when necessary.
+>This project is a custom implementation of a HashMap in JavaScript as part of The Odin Project curriculum. The implementation includes methods for setting, retrieving, and managing key-value pairs while handling collisions and dynamically resizing the hashmap when necessary.
 
 ## **Features**
 
