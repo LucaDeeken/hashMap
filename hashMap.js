@@ -1,13 +1,13 @@
 import { Node, LinkedList } from "./linkedList.js";
 
-class Key {
+export class Key {
   constructor(key, value) {
     this.key = key;
     this.value = value;
   }
 }
 
-class HashMap {
+export class HashMap {
   constructor(loadFactor, capacity) {
     this.loadFactor = loadFactor;
     this.capacity = capacity;
@@ -47,17 +47,15 @@ class HashMap {
     }
     let hashMapSize = this.length();
     console.log(hashMapSize);
-    if(hashMapSize>(this.capacity*this.loadFactor)) {
-      this.capacity = this.capacity*2;
-      let newArrays = this.capacity/2;
+    if (hashMapSize > this.capacity * this.loadFactor) {
+      this.capacity = this.capacity * 2;
+      let newArrays = this.capacity / 2;
       for (let i = 0; i < newArrays; i++) {
         let newArray = [];
         this.array.push(newArray);
       }
     }
-  
   }
-
 
   get(key) {
     this.hash(key);
@@ -183,7 +181,7 @@ class HashMap {
     let entriesArray = [];
 
     const iterations = keyArray.length;
-    for(let i=0; i<iterations; i++) {
+    for (let i = 0; i < iterations; i++) {
       let temporaryArray = [];
       let keyElement = keyArray.pop();
       let valueElement = valueArray.pop();
@@ -237,5 +235,3 @@ console.log(testDing.values());
 console.log(testDing.entries());
 testDing.set("hats", "Pupi");
 console.log(testDing);
-
-

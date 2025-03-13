@@ -73,36 +73,6 @@ export class LinkedList {
     return current;
   }
 
-  pop() {
-    if (this.head === null) {
-      console.log("List is empty");
-      return;
-    }
-    if (this.head.next === null) {
-      this.head = null;
-    } else {
-      let current = this.head;
-      while (current.next !== null && current.next.next !== null) {
-        current = current.next;
-      }
-      current.next = null;
-    }
-    this.size--;
-  }
-  contains(value) {
-    let current = this.head;
-
-    let counter = 0;
-    while (current.value !== value) {
-      current = current.next;
-      counter = counter + 1;
-      if (counter === this.size) {
-        break;
-      }
-    }
-    return current != null ? "true" : "false";
-  }
-
   find(key) {
     let current = this.head;
 
@@ -121,30 +91,13 @@ export class LinkedList {
 
   findKey(key) {
     let current = this.head;
-    // Durchlaufe die Liste, bis das Ende erreicht ist oder der Schlüssel gefunden wurde
     while (current !== null) {
       if (current.key === key) {
-        return "true"; // Schlüssel gefunden
-      }
-      current = current.next; // Gehe zum nächsten Knoten
-    }
-    return "false"; // Schlüssel nicht gefunden
-  }
-
-  toString() {
-    let current = this.head;
-
-    let string = "";
-    for (let i = 0; i < this.size; i++) {
-      if (i === this.size - 1) {
-        string = string + " (" + current.value + ")";
-      } else {
-        string = string + " (" + current.value + ") ->";
+        return "true";
       }
       current = current.next;
     }
-
-    return string;
+    return "false";
   }
 
   removeAt(index) {
@@ -175,18 +128,3 @@ export class LinkedList {
     }
   }
 }
-
-const list = new LinkedList();
-console.log("List is empty?", list.isEmpty());
-console.log("List size", list.getSize());
-list.prepend("dog");
-list.prepend("cat");
-list.prepend("cow");
-list.append("snake");
-console.log(list.getHead());
-console.log(list.getTail());
-console.log(list.getIndex(4));
-console.log(list.contains("dog"));
-console.log(list.find("cow"));
-console.log(list.insertAt("Dino", 3));
-console.log(list.toString());
