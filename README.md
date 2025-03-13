@@ -1,4 +1,4 @@
-# **HashMap Implementation in JavaScript#**
+# **HashMap Implementation in JavaScript**
 
 ## **Project Overview**
 
