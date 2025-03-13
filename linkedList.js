@@ -78,8 +78,6 @@ export class LinkedList {
 
     let counter = 0;
     while (current.key !== key) {
-      console.log(key);
-      console.log(current.key);
       current = current.next;
       counter = counter + 1;
       if (counter === this.size) {

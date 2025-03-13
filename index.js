@@ -42,3 +42,5 @@ console.log(testDing.values());
 console.log(testDing.entries());
 testDing.set("hats", "yellow");
 console.log(testDing);
+console.log(testDing.clear());
+console.log(testDing.length());

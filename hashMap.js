@@ -45,8 +45,11 @@ export class HashMap {
         fittingArray[0].append(newKey.key, newKey.value);
       }
     }
+    this.increaseCapacity();
+  }
+
+  increaseCapacity() {
     let hashMapSize = this.length();
-    console.log(hashMapSize);
     if (hashMapSize > this.capacity * this.loadFactor) {
       this.capacity = this.capacity * 2;
       let newArrays = this.capacity / 2;
@@ -127,18 +130,16 @@ export class HashMap {
 
   clear() {
     for (let bucket of this.array) {
-      if (bucket.length === 0) {
-        continue;
-      } else {
-        let bucketLength = bucket[0].size;
-        bucketLength = bucketLength - 1;
-        while (bucketLength > -1) {
-          bucket[0].removeAt(bucketLength);
-          bucketLength = bucketLength - 1;
-        }
+      if (bucket.length !== 0) {
+        bucket[0].head = null;
+        bucket[0].key = undefined;
+        bucket[0].value = undefined;
+        bucket[0].size = 0;
       }
     }
+    return console.log("HashMap was cleared!");
   }
+
   keys() {
     let outputArray = [];
     for (let bucket of this.array) {
@@ -179,7 +180,6 @@ export class HashMap {
     let keyArray = this.keys();
     let valueArray = this.values();
     let entriesArray = [];
-
     const iterations = keyArray.length;
     for (let i = 0; i < iterations; i++) {
       let temporaryArray = [];
@@ -189,7 +189,7 @@ export class HashMap {
       temporaryArray.push(valueElement);
       entriesArray.push(temporaryArray);
     }
-    console.log(entriesArray);
+    return entriesArray;
   }
 }
 
