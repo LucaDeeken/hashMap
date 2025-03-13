@@ -40,5 +40,5 @@ testDing.set("lion", "blue");
 console.log(testDing.keys());
 console.log(testDing.values());
 console.log(testDing.entries());
-testDing.set("hats", "Pupi");
+testDing.set("hats", "yellow");
 console.log(testDing);
